@@ -1,6 +1,6 @@
-package org.example.crud_with_db.repository;
+package org.example.spring_mvc.repository;
 
-import org.example.crud_with_db.Student;
+import org.example.spring_mvc.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

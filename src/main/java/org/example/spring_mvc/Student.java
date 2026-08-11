@@ -1,4 +1,4 @@
-package org.example.crud_with_db;
+package org.example.spring_mvc;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

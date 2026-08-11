@@ -1,8 +1,8 @@
-package org.example.crud_with_db.controller;
+package org.example.spring_mvc.controller;
 
-import org.example.crud_with_db.Student;
-import org.example.crud_with_db.repository.StudentRepository;
-import org.example.crud_with_db.model.request.StudentRequest;
+import org.example.spring_mvc.Student;
+import org.example.spring_mvc.repository.StudentRepository;
+import org.example.spring_mvc.model.request.StudentRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;

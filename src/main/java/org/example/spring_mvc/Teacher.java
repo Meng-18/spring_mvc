@@ -1,10 +1,10 @@
-package org.example.crud_with_db;
+package org.example.spring_mvc;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.example.crud_with_db.model.request.TeacherRequest;
+import org.example.spring_mvc.model.request.TeacherRequest;
 
 @Entity
 public class Teacher {

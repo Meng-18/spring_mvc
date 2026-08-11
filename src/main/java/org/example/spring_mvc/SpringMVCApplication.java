@@ -1,13 +1,13 @@
-package org.example.crud_with_db;
+package org.example.spring_mvc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CrudWithDbApplication {
+public class SpringMVCApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CrudWithDbApplication.class, args);
+        SpringApplication.run(SpringMVCApplication.class, args);
     }
 
 }

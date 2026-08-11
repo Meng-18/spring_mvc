@@ -1,4 +1,4 @@
-package org.example.crud_with_db.service.impl;
+package org.example.spring_mvc.service.impl;
 
 import org.springframework.stereotype.Service;
 

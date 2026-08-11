@@ -1,8 +1,8 @@
-package org.example.crud_with_db.controller;
+package org.example.spring_mvc.controller;
 
-import org.example.crud_with_db.Teacher;
-import org.example.crud_with_db.repository.TeacherRepository;
-import org.example.crud_with_db.model.request.TeacherRequest;
+import org.example.spring_mvc.model.request.TeacherRequest;
+import org.example.spring_mvc.model.respone.TeacherResponse;
+import org.example.spring_mvc.service.TeacherService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

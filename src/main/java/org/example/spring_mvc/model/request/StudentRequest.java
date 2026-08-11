@@ -1,8 +1,8 @@
-package org.example.crud_with_db.model.request;
+package org.example.spring_mvc.model.request;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.example.crud_with_db.Student;
+import org.example.spring_mvc.Student;
 
 @Setter
 @Getter

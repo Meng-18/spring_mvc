@@ -1,6 +1,6 @@
-package org.example.crud_with_db.model.request;
+package org.example.spring_mvc.model.request;
 
-import org.example.crud_with_db.Teacher;
+import org.example.spring_mvc.Teacher;
 
 public class TeacherRequest {
     private String name;
