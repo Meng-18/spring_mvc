@@ -2,7 +2,7 @@ package org.example.spring_mvc.model.request;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.example.spring_mvc.Student;
+import org.example.spring_mvc.model.entity.Student;
 
 @Setter
 @Getter

@@ -4,47 +4,39 @@ import org.example.spring_mvc.model.request.TeacherRequest;
 import org.example.spring_mvc.model.respone.TeacherResponse;
 import org.example.spring_mvc.service.TeacherService;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 //import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/teachers")
 public class TeacherController {
-    private final TeacherRepository repository;
+    private final TeacherService teacherService;
 
-    public TeacherController(TeacherRepository teacherRepository) {
-        this.repository = teacherRepository;
+    public TeacherController(TeacherService teacherService) {
+        this.teacherService = teacherService;
     }
 
     @GetMapping
-    public Page<Teacher> list(
+    public ResponseEntity<Page<TeacherResponse>> list(
             @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "10") int size
-//            @RequestParam String name
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "ASC") Sort.Direction direction,
+            @RequestParam(required = false) String name
     ) {
-        Sort sort = Sort.by("id").ascending().and(Sort.by("name").ascending());
-        PageRequest pageable = PageRequest.of(page - 1, size, sort);
-        return repository.findAll(pageable);
+        // Service returns Page<TeacherResponse> → wrap in ResponseEntity.ok()
+        return ResponseEntity.ok(teacherService.list(page, size, direction, name));
     }
-
-
-    @GetMapping("/{id}")
-    public Teacher get(@PathVariable Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Data Not Found"));
-    }
-
 
     @PostMapping
-    public Teacher create(@RequestBody TeacherRequest request) {
-        return repository.save(request.toEntity());
+    public ResponseEntity<TeacherResponse> create(@RequestBody TeacherRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(teacherService.create(request));
     }
 
     @GetMapping("/{id}")
@@ -52,15 +44,13 @@ public class TeacherController {
         return ResponseEntity.ok(teacherService.get(id));
     }
     @PutMapping("/{id}")
-    public Teacher update(@PathVariable Long id, @RequestBody TeacherRequest request) {
-        Teacher teacher = repository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Data Not Found"));
-        return repository.save(teacher.toUpdate(request));
+    public ResponseEntity<TeacherResponse> update(@PathVariable Long id, @RequestBody TeacherRequest request) {
+        return ResponseEntity.ok(teacherService.update(id, request));
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        repository.deleteById(id);
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        teacherService.delete(id);
+        return ResponseEntity.noContent().build();
     }
-
 }

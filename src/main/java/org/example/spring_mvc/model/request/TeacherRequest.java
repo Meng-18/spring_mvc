@@ -1,6 +1,6 @@
 package org.example.spring_mvc.model.request;
 
-import org.example.spring_mvc.Teacher;
+import org.example.spring_mvc.model.entity.Teacher;
 
 public class TeacherRequest {
     private String name;

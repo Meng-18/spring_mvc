@@ -5,13 +5,14 @@ import org.example.spring_mvc.repository.StudentRepository;
 import org.example.spring_mvc.model.request.StudentRequest;
 import org.example.spring_mvc.service.StudentService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/students")
-public class StudentControllers {
+public class StudentController {
     private final StudentService studentService;
     private final StudentRepository repository;
 
