@@ -1,10 +1,11 @@
-package org.example.spring_mvc;
+package org.example.spring_mvc.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.example.spring_mvc.model.request.TeacherRequest;
+import org.example.spring_mvc.model.respone.TeacherResponse;
 
 @Entity
 public class Teacher {
@@ -83,6 +84,10 @@ public class Teacher {
         this.setAddress(request.getAddress());
         this.setSubject(request.getSubject());
         return this;
+    }
+
+    public TeacherResponse toResponse() {
+        return new TeacherResponse(id, name, email,address, subject);
     }
 }
 

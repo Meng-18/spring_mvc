@@ -1,9 +1,10 @@
-package org.example.spring_mvc;
+package org.example.spring_mvc.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.example.spring_mvc.model.respone.StudentResponse;
 
 @Entity
 public class Student {
@@ -64,6 +65,11 @@ public class Student {
 
     public void toEntity(Student student) {
 
+    }
+
+    public StudentResponse toResponse() {
+
+        return new StudentResponse(id, name, gmail, address);
     }
 }
 

@@ -47,7 +47,10 @@ public class TeacherController {
         return repository.save(request.toEntity());
     }
 
-
+    @GetMapping("/{id}")
+    public ResponseEntity<TeacherResponse> get(@PathVariable Long id) {
+        return ResponseEntity.ok(teacherService.get(id));
+    }
     @PutMapping("/{id}")
     public Teacher update(@PathVariable Long id, @RequestBody TeacherRequest request) {
         Teacher teacher = repository.findById(id)

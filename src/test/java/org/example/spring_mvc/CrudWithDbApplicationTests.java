@@ -1,4 +1,4 @@
-package org.example.crud_with_db;
+package org.example.spring_mvc;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
