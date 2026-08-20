@@ -1,7 +1,7 @@
 package org.example.spring_mvc.service;
 
 import org.example.spring_mvc.model.request.TeacherRequest;
-import org.example.spring_mvc.model.respone.TeacherResponse;
+import org.example.spring_mvc.model.response.TeacherResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 

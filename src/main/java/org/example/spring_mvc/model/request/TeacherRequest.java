@@ -1,17 +1,18 @@
 package org.example.spring_mvc.model.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 import org.example.spring_mvc.model.entity.Teacher;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class TeacherRequest {
+    @NotBlank(message= "Name Cannot be empty")
     private String name;
+    @NotBlank(message = "email cannot be empty")
+    @Email(message="Invalid Email Format")
     private String email;
     private String address;
     private String subject;

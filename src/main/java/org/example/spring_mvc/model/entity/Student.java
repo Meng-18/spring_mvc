@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.spring_mvc.model.respone.StudentResponse;
+import org.example.spring_mvc.model.response.StudentResponse;
 
 @Entity
 @Getter
@@ -27,11 +27,6 @@ public class Student {
         this.name = name;
         this.gmail = gmail;
         this.address = address;
-    }
-
-
-    public void toEntity(Student student) {
-
     }
 
     public StudentResponse toResponse() {
