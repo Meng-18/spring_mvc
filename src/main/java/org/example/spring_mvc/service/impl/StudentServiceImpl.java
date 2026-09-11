@@ -19,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -36,14 +37,14 @@ public class StudentServiceImpl implements StudentService {
             if (StringUtils.hasText(name)) {
                 predicates.add(cb.like(cb.lower(root.get("name")), "%" + name.trim().toLowerCase() + "%"));
             }
-
             return cb.and(predicates.toArray(new Predicate[0]));
         }, pageable).map(Student::toResponse);
     }
 
     @Override
     public StudentResponse create(StudentRequest request) {
-        return studentRepository.save(request.toEntity()).toResponse();
+        String code = UUID.randomUUID().toString().replace("-", "").substring(0, 12);
+        return studentRepository.save(request.toEntity(code)).toResponse();
     }
 
     @Override
@@ -58,8 +59,10 @@ public class StudentServiceImpl implements StudentService {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new CustomException(HttpStatus.NOT_FOUND, "Student Not Found"));
         student.setName(request.getName());
-        student.setGmail(request.getGmail());
+        student.setGmail(request.getEmail());
         student.setAddress(request.getAddress());
+        student.getCard().setIssueDate(request.getCardRequest().getIssueDate());
+        student.getCard().setExpiryDate(request.getCardRequest().getExpiryDate());
         return studentRepository.save(student).toResponse();
     }
 

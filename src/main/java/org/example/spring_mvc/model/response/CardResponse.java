@@ -4,14 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class StudentResponse {
+@AllArgsConstructor
+public class CardResponse {
     private Long id;
-    private String name;
-    private String email;
-    private String address;
-    private CardResponse card;
+    private LocalDate issueDate;
+    private LocalDate expiryDate;
+    private String code;
 
 }

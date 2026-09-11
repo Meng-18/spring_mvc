@@ -2,6 +2,7 @@ package org.example.spring_mvc.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.apache.naming.factory.SendMailFactory;
 import org.example.spring_mvc.common.response.PaginationResponse;
 import org.example.spring_mvc.common.response.SuccessResponse;
 import org.example.spring_mvc.model.response.StudentResponse;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequiredArgsConstructor // Recommend to use
+@RequiredArgsConstructor // Recommend to use in controller instead of @AllArgsConstructor
 @RestController
 @RequestMapping("/api/v1/students")
 public class StudentController {

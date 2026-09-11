@@ -1,11 +1,14 @@
 package org.example.spring_mvc.model.request;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.spring_mvc.model.entity.Card;
 import org.example.spring_mvc.model.entity.Student;
 
 @Setter
@@ -17,10 +20,14 @@ public class StudentRequest {
     private String name;
     @NotBlank(message = "email cannot be empty")
     @Email(message="Invalid Email Format")
-    private String gmail;
+    private String email;
     private String address;
 
-    public Student toEntity() {
-        return new Student(name,gmail,address);
+    @Valid
+    @NotNull(message = "Card is required")
+    private CardRequest cardRequest;
+    public Student toEntity(String code) {
+        Card card = new Card(cardRequest.getIssueDate() , cardRequest.getExpiryDate(),code);
+        return new Student(name,email,address,card);
     }
 }
